@@ -22,7 +22,7 @@ class ConnectionFuture {
     ConnectionWrapper *wrapper_;
 
 public:
-    explicit ConnectionFuture(ConnectionWrapper *wrapper) : wrapper_(wrapper) {}
+    explicit ConnectionFuture(ConnectionWrapper *wrapper) : wrapper_{wrapper} {}
 
     [[nodiscard]] bool await_ready() const { return false; }
 

@@ -22,7 +22,7 @@ class IoUringSqe {
     io_uring_sqe *sqe_;
 
 public:
-    explicit IoUringSqe(io_uring_sqe *sqe) : sqe_(sqe) {}
+    explicit IoUringSqe(io_uring_sqe *sqe) : sqe_{sqe} {}
 
     ~IoUringSqe() = default;
 
@@ -78,7 +78,7 @@ class IoUringCqe {
     [[nodiscard]] io_uring_cqe *cqe() const { return cqe_; }
 
 public:
-    explicit IoUringCqe(io_uring_cqe *cqe) : cqe_(cqe) {}
+    explicit IoUringCqe(io_uring_cqe *cqe) : cqe_{cqe} {}
 
     ~IoUringCqe() = default;
 

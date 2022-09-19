@@ -16,7 +16,7 @@ extern "C" {
 namespace co_http_uring {
 
 Eventfd::Eventfd(int initial_value, int flags) :
-    fd_(::eventfd(initial_value, flags)) {
+    fd_{::eventfd(initial_value, flags)} {
     if (fd_ == -1) {
         const char *what = "eventfd() failed";
         throw std::system_error(errno, std::generic_category(), what);

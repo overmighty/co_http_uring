@@ -53,8 +53,8 @@ constexpr std::string_view INVALID_REQUEST_RESPONSE =
 thread_local Server *Server::thread_instance_ = nullptr;
 
 Server::Server(RequestHandler handler, unsigned int sq_entries) :
-    read_timeout_(DEFAULT_READ_TIMEOUT),
-    max_request_pre_body_size_(DEFAULT_MAX_REQUEST_PRE_BODY_SIZE),
+    read_timeout_{DEFAULT_READ_TIMEOUT},
+    max_request_pre_body_size_{DEFAULT_MAX_REQUEST_PRE_BODY_SIZE},
     handler_{std::move(handler)},
     ring_{sq_entries},
     stop_eventfd_{0, EFD_CLOEXEC} {

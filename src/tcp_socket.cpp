@@ -16,7 +16,7 @@ extern "C" {
 
 namespace co_http_uring {
 
-TcpSocket::TcpSocket() : fd_(::socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)) {
+TcpSocket::TcpSocket() : fd_{::socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)} {
     if (fd_ == -1) {
         const char *what = "socket() failed";
         throw std::system_error(errno, std::generic_category(), what);

@@ -27,10 +27,10 @@ constexpr std::string_view LINE_SEPARATOR = "\r\n";
 } // namespace
 
 ConnectionWriter::ConnectionWriter(int fixed_fd) :
-    fixed_fd_(fixed_fd),
-    buffer_(std::make_unique<Buffer>()),
-    begin_(buffer_->begin()),
-    end_(begin_) {
+    fixed_fd_{fixed_fd},
+    buffer_{std::make_unique<Buffer>()},
+    begin_{buffer_->begin()},
+    end_{begin_} {
 }
 
 ConnectionFuture<ConnectionWriter> ConnectionWriter::submit_write() {

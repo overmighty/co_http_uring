@@ -29,11 +29,11 @@ extern "C" {
 namespace co_http_uring {
 
 ConnectionReader::ConnectionReader(int fixed_fd) :
-    fixed_fd_(fixed_fd),
-    bytes_remaining_(std::numeric_limits<i64>::max()),
-    buffer_(std::make_unique<Buffer>()),
-    begin_(buffer_->cbegin()),
-    end_(begin_) {
+    fixed_fd_{fixed_fd},
+    bytes_remaining_{std::numeric_limits<i64>::max()},
+    buffer_{std::make_unique<Buffer>()},
+    begin_{buffer_->cbegin()},
+    end_{begin_} {
 }
 
 ConnectionFuture<ConnectionReader> ConnectionReader::submit_read() {

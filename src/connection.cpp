@@ -18,9 +18,9 @@
 namespace co_http_uring {
 
 Connection::Connection(int fixed_fd) :
-    fixed_fd_(fixed_fd),
-    reader_(fixed_fd_),
-    writer_(fixed_fd_) {
+    fixed_fd_{fixed_fd},
+    reader_{fixed_fd_},
+    writer_{fixed_fd_} {
 }
 
 ConnectionFuture<Connection> Connection::submit_close() {

@@ -19,9 +19,9 @@ ResponseWriter::ResponseWriter(
     ConnectionWriter &writer,
     int http_minor_version
 ) :
-    writer_(&writer),
-    http_minor_version_(http_minor_version),
-    state_(State::STATUS_LINE) {
+    writer_{&writer},
+    http_minor_version_{http_minor_version},
+    state_{State::STATUS_LINE} {
 }
 
 Task<std::optional<Error>> ResponseWriter::write_status(StatusCode code) {

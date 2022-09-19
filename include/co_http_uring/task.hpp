@@ -61,7 +61,7 @@ public:
         }
     };
 
-    explicit Task(Coroutine coroutine) : coroutine_(coroutine) {}
+    explicit Task(Coroutine coroutine) : coroutine_{coroutine} {}
 
     Task(const Task &) = delete;
     Task &operator=(const Task &) = delete;
@@ -134,7 +134,7 @@ public:
         }
     };
 
-    explicit Task(Coroutine coroutine) : coroutine_(coroutine) {}
+    explicit Task(Coroutine coroutine) : coroutine_{coroutine} {}
 
     Task(const Task &) = delete;
     Task &operator=(const Task &) = delete;
