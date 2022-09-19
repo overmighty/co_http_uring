@@ -1,0 +1,19 @@
+// Copyright (C) 2022 OverMighty
+// SPDX-License-Identifier: Apache-2.0
+
+#ifndef CO_HTTP_URING_VERSION_HPP
+#define CO_HTTP_URING_VERSION_HPP
+
+#include <string_view>
+
+#define CO_HTTP_URING_VERSION_MAJOR @co_http_uring_VERSION_MAJOR@
+#define CO_HTTP_URING_VERSION_MINOR @co_http_uring_VERSION_MINOR@
+#define CO_HTTP_URING_VERSION_PATCH @co_http_uring_VERSION_PATCH@
+
+namespace co_http_uring {
+
+constexpr std::string_view VERSION = "@co_http_uring_VERSION@";
+
+} // namespace co_http_uring
+
+#endif // CO_HTTP_URING_VERSION_HPP

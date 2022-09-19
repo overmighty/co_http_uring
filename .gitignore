@@ -1,0 +1,9 @@
+# Build artifacts.
+build/
+
+# clangd cache and compilation database.
+.cache/
+compile_commands.json
+
+# Code editor/IDE settings.
+.idea/
