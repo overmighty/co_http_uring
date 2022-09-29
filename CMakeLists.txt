@@ -22,14 +22,14 @@ add_library(
 
 option(ENABLE_SANITIZERS "Enable sanitizers.")
 
-if (ENABLE_SANITIZERS)
+if(ENABLE_SANITIZERS)
     set(
         SANITIZER_OPTIONS
         $<$<COMPILE_LANG_AND_ID:CXX,Clang,GNU>:-fsanitize=address,undefined>
     )
     target_compile_options(co_http_uring BEFORE PUBLIC ${SANITIZER_OPTIONS})
     target_link_options(co_http_uring BEFORE PUBLIC ${SANITIZER_OPTIONS})
-endif ()
+endif()
 
 target_compile_features(co_http_uring PUBLIC cxx_std_20)
 target_compile_options(
