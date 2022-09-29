@@ -57,10 +57,6 @@ public:
         io_uring_prep_read(sqe_, fd, buf, nbytes, offset);
     }
 
-    void prep_write(int fd, void *buffer, unsigned int nbytes, u64 offset) {
-        io_uring_prep_write(sqe_, fd, buffer, nbytes, offset);
-    }
-
     void prep_send(int sockfd, void *buf, std::size_t len, int flags) {
         io_uring_prep_send(sqe_, sockfd, buf, len, flags);
     }
