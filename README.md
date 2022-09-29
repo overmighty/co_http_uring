@@ -37,4 +37,3 @@ co_http_uring is a C++20 HTTP/1.1 library developed to experiment with
 
 This software is licensed under the [Apache License, version 2.0](
 ./LICENSE.txt).
-
