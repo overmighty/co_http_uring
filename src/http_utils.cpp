@@ -38,7 +38,7 @@ consteval CharPredicateTable get_token_char_table() {
 consteval CharPredicateTable get_field_content_char_table() {
     CharPredicateTable table{};
 
-    for (char c : WHITESPACE_CHARS) {
+    for (unsigned char c : WHITESPACE_CHARS) {
         table[c] = true;
     }
 
@@ -52,23 +52,23 @@ consteval CharPredicateTable get_field_content_char_table() {
 } // namespace
 
 bool is_token(std::string_view str) {
-    return std::all_of(str.cbegin(), str.cend(), [](char c) {
+    return std::all_of(str.cbegin(), str.cend(), [](unsigned char c) {
         return get_token_char_table()[c];
     });
 }
 
-bool is_digit(char c) {
+bool is_digit(unsigned char c) {
     return c >= '0' && c <= '9';
 }
 
 bool is_number(std::string_view str) {
-    return std::all_of(str.cbegin(), str.cend(), [](char c) {
+    return std::all_of(str.cbegin(), str.cend(), [](unsigned char c) {
         return is_digit(c);
     });
 }
 
 bool is_field_value(std::string_view str) {
-    return std::all_of(str.cbegin(), str.cend(), [](char c) {
+    return std::all_of(str.cbegin(), str.cend(), [](unsigned char c) {
         return get_field_content_char_table()[c];
     });
 }

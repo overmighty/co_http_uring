@@ -13,7 +13,7 @@ constexpr std::string_view HTTP_1_VERSION_PREFIX = "HTTP/1.";
 
 bool is_token(std::string_view str);
 
-bool is_digit(char c);
+bool is_digit(unsigned char c);
 
 bool is_number(std::string_view str);
 
