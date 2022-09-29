@@ -33,7 +33,7 @@ ConnectionWriter::ConnectionWriter(int fixed_fd) :
     end_{begin_} {
 }
 
-ConnectionFuture<ConnectionWriter> ConnectionWriter::submit_write() {
+ConnectionFuture<ConnectionWriter> ConnectionWriter::submit_send() {
     IoUring &ring = Server::thread_instance()->ring();
 
     IoUringSqe sqe = ring.get_sqe();
@@ -49,7 +49,8 @@ ConnectionFuture<ConnectionWriter> ConnectionWriter::submit_write() {
 
 Task<std::optional<Error>> ConnectionWriter::flush() {
     while (begin_ != end_) {
-        co_await submit_write();
+        co_await submit_send();
+
         IoUring &ring = Server::thread_instance()->ring();
 
         IoUringCqe cqe = ring.peek_cqe();

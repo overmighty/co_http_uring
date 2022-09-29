@@ -27,7 +27,7 @@ class ConnectionWriter {
     Buffer::iterator begin_;
     Buffer::iterator end_;
 
-    ConnectionFuture<ConnectionWriter> submit_write();
+    ConnectionFuture<ConnectionWriter> submit_send();
 
 public:
     explicit ConnectionWriter(int fixed_fd);

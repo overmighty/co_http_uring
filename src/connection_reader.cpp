@@ -36,7 +36,7 @@ ConnectionReader::ConnectionReader(int fixed_fd) :
     end_{begin_} {
 }
 
-ConnectionFuture<ConnectionReader> ConnectionReader::submit_read() {
+ConnectionFuture<ConnectionReader> ConnectionReader::submit_recv() {
     if (begin_ == end_) {
         begin_ = buffer_->cbegin();
         end_ = begin_;
@@ -74,7 +74,7 @@ Task<std::optional<Error>> ConnectionReader::fill() {
         co_return Error::BUFFER_FULL;
     }
 
-    co_await submit_read();
+    co_await submit_recv();
 
     IoUring &ring = Server::thread_instance()->ring();
 

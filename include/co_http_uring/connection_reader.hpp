@@ -29,7 +29,7 @@ class ConnectionReader {
     Buffer::const_iterator begin_;
     Buffer::const_iterator end_;
 
-    ConnectionFuture<ConnectionReader> submit_read();
+    ConnectionFuture<ConnectionReader> submit_recv();
 
     Task<std::optional<Error>> fill();
 
