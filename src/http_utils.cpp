@@ -20,7 +20,7 @@ using CharPredicateTable =
 
 constexpr std::string_view WHITESPACE_CHARS = "\t ";
 
-consteval CharPredicateTable get_token_char_table() {
+consteval CharPredicateTable get_is_token_char_table() {
     CharPredicateTable table{};
     table['!'] = true;
     std::fill(table.begin() + '#', table.begin() + '\'' + 1, true);
@@ -35,7 +35,7 @@ consteval CharPredicateTable get_token_char_table() {
     return table;
 }
 
-consteval CharPredicateTable get_field_content_char_table() {
+consteval CharPredicateTable get_is_field_value_char_table() {
     CharPredicateTable table{};
 
     for (unsigned char c : WHITESPACE_CHARS) {
@@ -49,11 +49,15 @@ consteval CharPredicateTable get_field_content_char_table() {
     return table;
 }
 
+constexpr CharPredicateTable IS_TOKEN_CHAR = get_is_token_char_table();
+constexpr CharPredicateTable IS_FIELD_VALUE_CHAR =
+    get_is_field_value_char_table();
+
 } // namespace
 
 bool is_token(std::string_view str) {
     return std::all_of(str.cbegin(), str.cend(), [](unsigned char c) {
-        return get_token_char_table()[c];
+        return IS_TOKEN_CHAR[c];
     });
 }
 
@@ -69,7 +73,7 @@ bool is_number(std::string_view str) {
 
 bool is_field_value(std::string_view str) {
     return std::all_of(str.cbegin(), str.cend(), [](unsigned char c) {
-        return get_field_content_char_table()[c];
+        return IS_FIELD_VALUE_CHAR[c];
     });
 }
 
