@@ -71,8 +71,6 @@ class IoUringCqe {
 
     io_uring_cqe *cqe_;
 
-    [[nodiscard]] io_uring_cqe *cqe() const { return cqe_; }
-
 public:
     explicit IoUringCqe(io_uring_cqe *cqe) : cqe_{cqe} {}
 
@@ -118,7 +116,7 @@ public:
     IoUringCqe wait_cqe();
 
     void seen_cqe(const IoUringCqe &cqe) {
-        io_uring_cqe_seen(&ring_, cqe.cqe());
+        io_uring_cqe_seen(&ring_, cqe.cqe_);
     }
 };
 
