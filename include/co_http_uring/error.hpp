@@ -9,6 +9,7 @@ namespace co_http_uring {
 enum class Error {
     READ_LIMIT_REACHED,
     BUFFER_FULL,
+    CONNECTION_CLOSED,
     READ_ERROR,
     CONNECTION_TIMED_OUT,
     INVALID_REQUEST,

@@ -82,6 +82,10 @@ Task<std::optional<Error>> ConnectionReader::fill() {
     i32 res = cqe.res();
     ring.seen_cqe(cqe);
 
+    if (res == 0) {
+        co_return Error::CONNECTION_CLOSED;
+    }
+
     if (res < 0) {
         if (res != -ETIME) {
             fmt::print(stderr, "read error: {}\n", std::strerror(-res));
