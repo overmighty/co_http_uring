@@ -72,8 +72,7 @@ Task<std::optional<Error>> ResponseWriter::write_body(std::string_view body) {
     );
 
     if (error || (error = co_await writer_->write_line()) ||
-        (error = co_await writer_->write(body)) ||
-        (error = co_await writer_->write_line())) {
+        (error = co_await writer_->write(body))) {
         co_return *error;
     }
 
